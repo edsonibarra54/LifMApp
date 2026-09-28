@@ -14,8 +14,9 @@
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --outfit: 'Outfit', sans-serif;
 
-  font: 18px/145% var(--sans);
+  font: 18px/145% var(--outfit);
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
@@ -28,6 +29,42 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+}
+
+:root {
+  --background: #f7f7f5;
+  --foreground: #111110;
+  --card: #ffffff;
+  --card-foreground: #111110;
+  --primary: #111110;
+  --primary-foreground: #f7f7f5;
+  --secondary: #efefed;
+  --secondary-foreground: #111110;
+  --muted: #e8e8e5;
+  --muted-foreground: #777770;
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+  --border: #e2e2df;
+  --ring: #2563eb;
+  --radius: 8px;
+}
+
+.dark {
+  --background: #0f0f0e;
+  --foreground: #f0f0ed;
+  --card: #1a1a18;
+  --card-foreground: #f0f0ed;
+  --primary: #f0f0ed;
+  --primary-foreground: #0f0f0e;
+  --secondary: #242422;
+  --secondary-foreground: #f0f0ed;
+  --muted: #1f1f1d;
+  --muted-foreground: #888880;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --border: #2a2a28;
+  --ring: #3b82f6;
+  --radius: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,11 +88,9 @@
 }
 
 #root {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -66,46 +101,18 @@ body {
   margin: 0;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
+h1{
+  font-family: var(--outfit);
+  font-weight: 600;
   color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+h1 {
+  font-size: 16px;
+  line-height: 20px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+p {
+  margin: 0;
 }
