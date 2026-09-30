@@ -1,12 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import HabitTracker from '../pages/HabitTracker.tsx';
-import MedicalOrganizer from '../pages/MedicalOrganizer.tsx';
-import PaysheetOrganizer from '../pages/PaysheetOrganizer.tsx';
+import { HabitTracker, MedicalOrganizer, PaysheetOrganizer, NotFound } from "../pages";
 import App from '../App.tsx'
 
 const router = createBrowserRouter([
   {
-    element: <App/>,
+    element: <App />,
     children: [
       {
         path: "/",
@@ -14,30 +12,34 @@ const router = createBrowserRouter([
       },
       {
         path: "/habit-tracker",
-        element: <HabitTracker/>,
+        element: <HabitTracker />,
         handle: {
-          title: 'Habit Tracker',
-          subtitle: 'Track habits through month',
+          title: "Habit Tracker",
+          subtitle: "Track habits through month",
         },
       },
       {
         path: "/medical-organizer",
-        element: <MedicalOrganizer/>,
+        element: <MedicalOrganizer />,
         handle: {
-          title: 'Medical Organizer',
-          subtitle: 'Organize medicine schedules',
+          title: "Medical Organizer",
+          subtitle: "Organize medicine schedules",
         },
       },
       {
         path: "/paysheet-organizer",
-        element: <PaysheetOrganizer/>,
+        element: <PaysheetOrganizer />,
         handle: {
-          title: 'Paysheet Organizer',
-          subtitle: 'Organize fortnight income',
+          title: "Paysheet Organizer",
+          subtitle: "Organize fortnight income",
         },
       },
     ],
-  }
+  },
+  {
+    path: "/*",
+    element: <NotFound />
+  },
 ]);
 
 export default router
