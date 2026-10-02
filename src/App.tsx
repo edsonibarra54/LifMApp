@@ -4,6 +4,8 @@ import medical from './assets/Medical.svg?react';
 import paysheet from './assets/Paysheet.svg?react';
 import tracker from './assets/Tracker.svg?react';
 import { NavigationItem } from './components';
+import { ButtonComponent } from './components';
+import { useTheme, ThemeToggle } from './theme';
 import { Outlet, useMatches } from 'react-router'
 
 type RouteHandle = {
@@ -13,6 +15,7 @@ type RouteHandle = {
 
 function App() {
   const matches = useMatches();
+  const { theme, toggleTheme } = useTheme();
 
   const currentPage = matches.find(
     (match) => match.handle
@@ -32,11 +35,14 @@ function App() {
         </div>
       </section>
       <section className='app__content'>
-        <header>
+        <header className='content__header'>
           <section className='header-title'>
             <h1>{currentPage?.title}</h1>
             <span>{currentPage?.subtitle}</span>
           </section>
+          <div onClick={toggleTheme}>
+            <ThemeToggle theme={theme} className='toggle'/>
+          </div>
         </header>
         <Outlet/>
       </section>

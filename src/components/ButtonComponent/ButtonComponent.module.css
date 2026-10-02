@@ -1,12 +1,12 @@
 .button {
     width: fit-content;
-    padding: 16px;
-    color: white;
-    background-color: #3B82F6;
+    padding: var(--space-4);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
     border: 0;
-    border-radius: 4px;
-    font-family: var(--outfit);
-    font-size: 16px;
+    border-radius: var(--radius-xs);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-md);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,18 +14,10 @@
 }
 
 .button:hover {
-    background-color: #2563EB;
+    background-color: var(--primary-hover);
     cursor: pointer;
 }
 
 .button:active {
-    background-color: #1D4ED8;
-}
-
-.default {
-
-}
-
-.medium {
-    
+    background-color: var(--primary-active);
 }
