@@ -2,33 +2,36 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    gap: 12px;
-    padding: 10px 12px;
-    color: white;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3);
+    color: var(--foreground);
     background-color: transparent;
     border: 0;
 }
 
 .navigation__item:hover {
-    background-color: grey;
-    color: black;
+    background-color: var(--secondary-hover);
     cursor: pointer;
 }
 
+.navigation__item:active {
+    background-color: var(--secondary-active);
+}
+
 .item__img {
-    width: 20px;
-    height: 20px;
+    width: var(--space-5);
+    height: var(--space-5);
 }
 
 .item__content {
     display: flex;
     flex: 1;
     flex-direction: row;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
     text-align: left;
-    gap: 16px;
+    gap: var(--space-4);
 }
 
 .item__name {
