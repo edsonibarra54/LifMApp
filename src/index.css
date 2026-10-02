@@ -1,111 +1,438 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* ==========================================================================
+     COLORS - FOUNDATION
+     ========================================================================== */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Main application background.
+     Use for pages, screens and large layout areas. */
+  --background: #f7f7f5;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Primary text color.
+     Use for headings, body text and important content. */
+  --foreground: #0f172a;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Secondary surface layer.
+     Use for sidebars, navigation rails, toolbars and grouped sections. */
+  --surface: #f1f5f9;
+
+  /* Text displayed on surface backgrounds. */
+  --surface-foreground: #0f172a;
+
+  /* Card, dialog and panel background.
+     Use for cards, modals, popovers and content containers. */
+  --card: #ffffff;
+
+  /* Text displayed inside cards. */
+  --card-foreground: #0f172a;
+
+  /* ==========================================================================
+     COLORS - PRIMARY ACTIONS
+     ========================================================================== */
+
+  /* Brand color.
+     Use for the main action of a screen. */
+  --primary: #6366f1;
+
+  /* Content displayed on primary backgrounds. */
+  --primary-foreground: #ffffff;
+
+  /* Hover state for primary actions. */
+  --primary-hover: #5458ee;
+
+  /* Pressed/active state for primary actions. */
+  --primary-active: #4548d6;
+
+  /* ==========================================================================
+     COLORS - SECONDARY ACTIONS
+     ========================================================================== */
+
+  /* Secondary buttons and neutral actions. */
+  --secondary: #e2e8f0;
+
+  /* Content displayed on secondary backgrounds. */
+  --secondary-foreground: #0f172a;
+
+  /* Hover state for secondary actions. */
+  --secondary-hover: #cbd5e1;
+
+  /* Pressed state for secondary actions. */
+  --secondary-active: #94a3b8;
+
+  /* ==========================================================================
+     COLORS - ACCENT
+     ========================================================================== */
+
+  /* Accent color.
+     Use sparingly for highlights, indicators and special emphasis. */
+  --accent: #06b6d4;
+
+  /* Content displayed on accent backgrounds. */
+  --accent-foreground: #ffffff;
+
+  /* Hover state for accent elements. */
+  --accent-hover: #0891b2;
+
+  /* Pressed state for accent elements. */
+  --accent-active: #0e7490;
+
+  /* ==========================================================================
+     COLORS - FEEDBACK STATES
+     ========================================================================== */
+
+  /* Success state.
+     Use for completed actions and positive indicators. */
+  --success: #22c55e;
+
+  --success-foreground: #ffffff;
+
+  /* Warning state.
+     Use for cautions and non-critical issues. */
+  --warning: #f59e0b;
+
+  --warning-foreground: #ffffff;
+
+  /* Error state.
+     Use for validation errors and destructive actions. */
+  --error: #ef4444;
+
+  --error-foreground: #ffffff;
+
+  /* Informational state.
+     Use for notices and informational banners. */
+  --info: #38bdf8;
+
+  --info-foreground: #ffffff;
+
+  /* ==========================================================================
+     COLORS - SELECTION
+     ========================================================================== */
+
+  /* Selected item background.
+     Use for navigation, tabs, menus and selected rows. */
+  --selected: #e0e7ff;
+
+  /* Content displayed on selected backgrounds. */
+  --selected-foreground: #312e81;
+
+  /* ==========================================================================
+     COLORS - MUTED
+     ========================================================================== */
+
+  /* Muted background.
+     Use for placeholders and subtle UI regions. */
+  --muted: #e5e7eb;
+
+  /* Muted text color.
+     Use for descriptions, hints and secondary information. */
+  --muted-foreground: #64748b;
+
+  /* ==========================================================================
+     COLORS - INPUTS
+     ========================================================================== */
+
+  /* Input background. */
+  --input: #ffffff;
+
+  /* Default input border. */
+  --input-border: #cbd5e1;
+
+  /* Input focus state. */
+  --input-focus: #6366f1;
+
+  /* ==========================================================================
+     COLORS - DISABLED
+     ========================================================================== */
+
+  /* Disabled component background. */
+  --disabled: #e2e8f0;
+
+  /* Disabled component content. */
+  --disabled-foreground: #94a3b8;
+
+  /* ==========================================================================
+     COLORS - BORDERS
+     ========================================================================== */
+
+  /* Default border color. */
+  --border: #dbe3ed;
+
+  /* Focus ring color.
+     Use for accessibility indicators. */
+  --ring: #6366f1;
+
+  /* ==========================================================================
+     CHARTS
+     ========================================================================== */
+
+  /* Financial series / primary metric */
+  --chart-1: #6366f1;
+
+  /* Positive metric */
+  --chart-2: #22c55e;
+
+  /* Warning metric */
+  --chart-3: #f59e0b;
+
+  /* Negative metric */
+  --chart-4: #ef4444;
+
+  /* Additional series */
+  --chart-5: #06b6d4;
+
+  /* Additional series */
+  --chart-6: #8b5cf6;
+
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+
+  /* Main application font. */
+  --font-family-base:
+    'Outfit', 
+    sans-serif;
+
+  /* Monospace font.
+     Use for logs, codes and financial values if desired. */
+  --font-family-mono:
+    "Cascadia Code",
+    Consolas,
+    monospace;
+
+  /* Small labels and helper text */
+  --font-size-xs: 0.75rem;
+
+  /* Secondary text */
+  --font-size-sm: 0.875rem;
+
+  /* Default body text */
+  --font-size-md: 1rem;
+
+  /* Prominent body text */
+  --font-size-lg: 1.125rem;
+
+  /* Section titles */
+  --font-size-xl: 1.25rem;
+
+  /* View/page titles */
+  --font-size-2xl: 1.5rem;
+
+  /* Dashboard headers */
+  --font-size-3xl: 2rem;
+
+  /* Hero titles */
+  --font-size-4xl: 2.5rem;
+
+  /* Text weight */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ==========================================================================
+     SPACING
+     ========================================================================== */
+
+  /* Tiny spacing */
+  --space-1: 4px;
+
+  /* Icon-to-text spacing */
+  --space-2: 8px;
+
+  /* Compact layouts */
+  --space-3: 12px;
+
+  /* Standard spacing */
+  --space-4: 16px;
+
+  /* Component separation */
+  --space-5: 24px;
+
+  /* Section separation */
+  --space-6: 32px;
+
+  /* Large layout spacing */
+  --space-7: 48px;
+
+  /* Screen-level spacing */
+  --space-8: 64px;
+
+  /* ==========================================================================
+     BORDERS
+     ========================================================================== */
+
+  /* Standard border width */
+  --border-width-xs: 1px;
+
+  /* Emphasized border */
+  --border-width-sm: 2px;
+
+  /* Special cases */
+  --border-width-md: 3px;
+
+  /* ==========================================================================
+     BORDER RADIUS
+     ========================================================================== */
+
+  /* Compact controls */
+  --radius-xs: 4px;
+
+  /* Small controls */
+  --radius-sm: 6px;
+
+  /* Default radius */
+  --radius-md: 8px;
+
+  /* Cards and containers */
+  --radius-lg: 12px;
+
+  /* Dialogs and sheets */
+  --radius-xl: 16px;
+
+  /* Pills, chips and avatars */
+  --radius-full: 9999px;
+
+  /* ==========================================================================
+     SHADOWS
+     ========================================================================== */
+
+  /* Subtle elevation */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+
+  /* Dropdowns and floating elements */
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.12);
+
+  /* Dialogs and popovers */
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.16);
+
+  /* Major overlays */
+  --shadow-xl: 0 24px 48px rgba(15, 23, 42, 0.20);
+
+  /* ==========================================================================
+     TRANSITIONS
+     ========================================================================== */
+
+  /* Quick interactions */
+  --transition-fast: 150ms;
+
+  /* Standard interactions */
+  --transition-normal: 250ms;
+
+  /* Slow transitions */
+  --transition-slow: 350ms;
+
+  /* Preferred easing curve */
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ==========================================================================
+     LAYOUT
+     ========================================================================== */
+
+  /* Page content width */
+  --container-sm: 640px;
+
+  /* Tablet width */
+  --container-md: 768px;
+
+  /* Desktop width */
+  --container-lg: 1024px;
+
+  /* Large desktop width */
+  --container-xl: 1280px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ==========================================================================
+   DARK THEME
+   ========================================================================== */
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+.dark {
+  --background: #0f0f0e;
+  --foreground: #f8fafc;
+
+  --surface: #162033;
+  --surface-foreground: #f8fafc;
+
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+
+  --primary: #818cf8;
+  --primary-foreground: #ffffff;
+  --primary-hover: #a5b4fc;
+  --primary-active: #6366f1;
+
+  --secondary: #334155;
+  --secondary-foreground: #f8fafc;
+  --secondary-hover: #475569;
+  --secondary-active: #64748b;
+
+  --accent: #22d3ee;
+  --accent-foreground: #082f49;
+  --accent-hover: #67e8f9;
+  --accent-active: #06b6d4;
+
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --info: #7dd3fc;
+
+  --selected: #312e81;
+  --selected-foreground: #e0e7ff;
+
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+
+  --input: #1e293b;
+  --input-border: #475569;
+  --input-focus: #818cf8;
+
+  --disabled: #334155;
+  --disabled-foreground: #64748b;
+
+  --border: #334155;
+  --ring: #818cf8;
+
+  --chart-1: #818cf8;
+  --chart-2: #4ade80;
+  --chart-3: #fbbf24;
+  --chart-4: #f87171;
+  --chart-5: #22d3ee;
+  --chart-6: #c084fc;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.45);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.55);
 }
 
 #root {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
+  background-color: var(--background);
+  color: var(--foreground);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  font-family: var(--font-family-base);
 }
 
 body {
   margin: 0;
+  user-select: none;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
+h1{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
   color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+p {
+  margin: 0;
 }

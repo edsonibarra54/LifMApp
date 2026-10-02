@@ -1,0 +1,23 @@
+.button {
+    width: fit-content;
+    padding: var(--space-4);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: 0;
+    border-radius: var(--radius-xs);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    background-color: var(--primary-hover);
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: var(--primary-active);
+}

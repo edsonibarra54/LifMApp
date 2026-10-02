@@ -1,0 +1,30 @@
+.view {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.view__title {
+    font-size: 256px;
+    line-height: 256px;
+}
+
+.view__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--space-5);
+
+    span {
+        font-weight: var(--font-weight-bold);
+    }
+}
+
+.view__button {
+    width: 230px;
+}
