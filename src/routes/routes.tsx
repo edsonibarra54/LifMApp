@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { HabitTracker, MedicalOrganizer, PaysheetOrganizer, NotFound } from "../pages";
+import { HabitTracker, MedicalOrganizer, PaysheetOrganizer, NotFound, Distribution, NewReport, MyReports } from "../pages";
 import App from '../App.tsx'
 
 const router = createBrowserRouter([
@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Navigate to="/paysheet-organizer" replace />,
+        element: <Navigate to="/paysheet-organizer/distribution" replace />,
       },
       {
         path: "/habit-tracker",
@@ -33,6 +33,20 @@ const router = createBrowserRouter([
           title: "Paysheet Organizer",
           subtitle: "Organize fortnight income",
         },
+        children: [
+          {
+            path: 'distribution',
+            element: <Distribution />
+          },
+          {
+            path: 'new-report',
+            element: <NewReport />
+          },
+          {
+            path: 'my-reports',
+            element: <MyReports />
+          }
+        ]
       },
     ],
   },

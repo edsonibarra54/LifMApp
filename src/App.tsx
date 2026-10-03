@@ -4,7 +4,6 @@ import medical from './assets/Medical.svg?react';
 import paysheet from './assets/Paysheet.svg?react';
 import tracker from './assets/Tracker.svg?react';
 import { NavigationItem } from './components';
-import { ButtonComponent } from './components';
 import { useTheme, ThemeToggle } from './theme';
 import { Outlet, useMatches } from 'react-router'
 
