@@ -43,11 +43,22 @@
   justify-content: space-between;
 }
 
+.header__left {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.header__menu {
+  color: var(--secondary-foreground);
+}
+
 header {
   margin: var(--space-5) var(--space-4);
 }
 
-.header-title {
+.headerTitle {
   display: flex;;
   flex-direction: column;
   text-align: left;
