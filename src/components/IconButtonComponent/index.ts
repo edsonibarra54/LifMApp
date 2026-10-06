@@ -1,0 +1,1 @@
+export { IconButtonComponent } from './IconButtonComponent';
