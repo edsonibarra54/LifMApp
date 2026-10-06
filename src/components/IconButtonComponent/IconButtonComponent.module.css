@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Base button
+   ========================================================================== */
+
+.button {
+    width: fit-content;
+    padding: var(--space-2);
+    border: none;
+    border-radius: var(--radius-xs);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-md);
+    box-sizing: border-box;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        outline-color 0.2s ease;
+}
+
+.button:disabled {
+    cursor: default;
+}
+
+.button:not(:disabled):hover {
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   Sizes
+   ========================================================================== */
+
+.small {
+    padding: var(--space-2);
+}
+
+.medium {
+    padding: var(--space-3);
+}
+
+/* ==========================================================================
+   Color schemes
+   ========================================================================== */
+
+.primary {
+    --btn-color: var(--primary);
+    --btn-hover: var(--primary-hover);
+    --btn-active: var(--primary-active);
+    --btn-foreground: var(--primary-foreground);
+}
+
+.neutral {
+    --btn-color: var(--secondary);
+    --btn-hover: var(--secondary-hover);
+    --btn-active: var(--secondary-active);
+    --btn-foreground: var(--secondary-foreground);
+}
+
+/* ==========================================================================
+   Fill
+   ========================================================================== */
+
+.fill {
+    background-color: var(--btn-color);
+    color: var(--btn-foreground);
+}
+
+.fill:not(:disabled):hover {
+    background-color: var(--btn-hover);
+}
+
+.fill:not(:disabled):active {
+    background-color: var(--btn-active);
+}
+
+.fill:disabled {
+    background-color: var(--disabled);
+    color: var(--disabled-foreground);
+}
+
+/* ==========================================================================
+   Outlined
+   ========================================================================== */
+
+.outlined {
+    background-color: transparent;
+    color: var(--btn-color);
+    outline: var(--border-width-xs) solid var(--btn-color);
+}
+
+.outlined:not(:disabled):hover {
+    color: var(--btn-hover);
+    outline-color: var(--btn-hover);
+}
+
+.outlined:not(:disabled):active {
+    color: var(--btn-active);
+    outline-color: var(--btn-active);
+}
+
+.outlined:disabled {
+    color: var(--disabled);
+    outline-color: var(--disabled);
+}
+
+/* ==========================================================================
+   Ghost
+   ========================================================================== */
+
+.ghost {
+    background-color: transparent;
+    color: var(--btn-color);
+}
+
+.ghost:not(:disabled):hover {
+    background-color: var(--btn-hover);
+    color: var(--btn-foreground);
+}
+
+.ghost:not(:disabled):active {
+    background-color: var(--btn-active);
+    color: var(--btn-foreground);
+}
+
+.ghost:disabled {
+    color: var(--disabled);
+}
+
+/* ==========================================================================
+   Icon sizing
+   ========================================================================== */
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon__small {
+    width: var(--space-5);
+    height: var(--space-5);
+}
+
+.icon__medium {
+    width: var(--space-6);
+    height: var(--space-6);
+}

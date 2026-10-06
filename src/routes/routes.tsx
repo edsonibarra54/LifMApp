@@ -1,10 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import { HabitTracker, MedicalOrganizer, PaysheetOrganizer, NotFound } from "../pages";
-import App from '../App.tsx'
+import { AppLayout } from '../layouts';
 
 const router = createBrowserRouter([
   {
-    element: <App />,
+    element: <AppLayout />,
     children: [
       {
         path: "/",

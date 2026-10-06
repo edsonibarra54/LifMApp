@@ -1,29 +1,134 @@
 :root {
   /* ==========================================================================
-     COLORS - FOUNDATION
+     COLORS - CARBON-INSPIRED PALETTE
+     ========================================================================== */
+
+  /*
+   * The palette follows a Carbon-like 10-step scale:
+   * - Lower values are lighter.
+   * - Higher values are darker/more saturated.
+   * Semantic tokens below should be preferred by components.
+   */
+
+  /* Neutral palette */
+  --gray-0: #ffffff;
+  --gray-10: #f4f4f4;
+  --gray-20: #e0e0e0;
+  --gray-30: #c6c6c6;
+  --gray-40: #a8a8a8;
+  --gray-50: #8d8d8d;
+  --gray-60: #6f6f6f;
+  --gray-70: #525252;
+  --gray-80: #393939;
+  --gray-90: #262626;
+  --gray-100: #161616;
+
+  /* Brand / interactive palette */
+  --blue-10: #edf5ff;
+  --blue-20: #d0e2ff;
+  --blue-30: #a6c8ff;
+  --blue-40: #78a9ff;
+  --blue-50: #4589ff;
+  --blue-60: #0f62fe;
+  --blue-70: #0043ce;
+  --blue-80: #002d9c;
+  --blue-90: #001d6c;
+  --blue-100: #001141;
+
+  /* Green palette */
+  --green-10: #defbe6;
+  --green-20: #a7f0ba;
+  --green-30: #6fdc8c;
+  --green-40: #42be65;
+  --green-50: #24a148;
+  --green-60: #198038;
+  --green-70: #0e6027;
+  --green-80: #044317;
+  --green-90: #022d0d;
+  --green-100: #071908;
+
+  /* Yellow palette */
+  --yellow-10: #fcf4d6;
+  --yellow-20: #fddc69;
+  --yellow-30: #f1c21b;
+  --yellow-40: #d2a106;
+  --yellow-50: #b28600;
+  --yellow-60: #8e6a00;
+  --yellow-70: #684e00;
+  --yellow-80: #483700;
+  --yellow-90: #302400;
+  --yellow-100: #1c1500;
+
+  /* Red palette */
+  --red-10: #fff1f1;
+  --red-20: #ffd7d9;
+  --red-30: #ffb3b8;
+  --red-40: #ff8389;
+  --red-50: #fa4d56;
+  --red-60: #da1e28;
+  --red-70: #a2191f;
+  --red-80: #750e13;
+  --red-90: #520408;
+  --red-100: #2d0709;
+
+  /* Cyan palette */
+  --cyan-10: #e5f6ff;
+  --cyan-20: #bae6ff;
+  --cyan-30: #82cfff;
+  --cyan-40: #33b1ff;
+  --cyan-50: #1192e8;
+  --cyan-60: #0072c3;
+  --cyan-70: #00539a;
+  --cyan-80: #003a6d;
+  --cyan-90: #012749;
+  --cyan-100: #061727;
+
+  /* Purple palette */
+  --purple-10: #f6f2ff;
+  --purple-20: #e8daff;
+  --purple-30: #d4bbff;
+  --purple-40: #be95ff;
+  --purple-50: #a56eff;
+  --purple-60: #8a3ffc;
+  --purple-70: #6929c4;
+  --purple-80: #491d8b;
+  --purple-90: #31135e;
+  --purple-100: #1c0f30;
+
+  /* ==========================================================================
+     COLORS - CONTENT & SURFACES
      ========================================================================== */
 
   /* Main application background.
      Use for pages, screens and large layout areas. */
-  --background: #f7f7f5;
+  --background: var(--gray-0);
 
   /* Primary text color.
      Use for headings, body text and important content. */
-  --foreground: #0f172a;
+  --foreground: var(--gray-100);
 
   /* Secondary surface layer.
      Use for sidebars, navigation rails, toolbars and grouped sections. */
-  --surface: #f1f5f9;
+  --surface: var(--gray-10);
 
   /* Text displayed on surface backgrounds. */
-  --surface-foreground: #0f172a;
+  --surface-foreground: var(--gray-100);
 
   /* Card, dialog and panel background.
      Use for cards, modals, popovers and content containers. */
-  --card: #ffffff;
+  --card: var(--gray-0);
 
   /* Text displayed inside cards. */
-  --card-foreground: #0f172a;
+  --card-foreground: var(--gray-100);
+
+  /* Raised layer for controls and containers above the base surface. */
+  --layer: var(--gray-0);
+
+  /* Hovered layer. */
+  --layer-hover: var(--gray-10);
+
+  /* Pressed/active layer. */
+  --layer-active: var(--gray-20);
 
   /* ==========================================================================
      COLORS - PRIMARY ACTIONS
@@ -31,32 +136,32 @@
 
   /* Brand color.
      Use for the main action of a screen. */
-  --primary: #6366f1;
+  --primary: var(--blue-60);
 
   /* Content displayed on primary backgrounds. */
-  --primary-foreground: #ffffff;
+  --primary-foreground: var(--gray-0);
 
   /* Hover state for primary actions. */
-  --primary-hover: #5458ee;
+  --primary-hover: var(--blue-70);
 
   /* Pressed/active state for primary actions. */
-  --primary-active: #4548d6;
+  --primary-active: var(--blue-80);
 
   /* ==========================================================================
      COLORS - SECONDARY ACTIONS
      ========================================================================== */
 
   /* Secondary buttons and neutral actions. */
-  --secondary: #e2e8f0;
+  --secondary: var(--gray-40);
 
   /* Content displayed on secondary backgrounds. */
-  --secondary-foreground: #0f172a;
+  --secondary-foreground: var(--gray-100);
 
   /* Hover state for secondary actions. */
-  --secondary-hover: #cbd5e1;
+  --secondary-hover: var(--gray-50);
 
-  /* Pressed state for secondary actions. */
-  --secondary-active: #94a3b8;
+  /* Pressed/active state for secondary actions. */
+  --secondary-active: var(--gray-60);
 
   /* ==========================================================================
      COLORS - ACCENT
@@ -64,16 +169,30 @@
 
   /* Accent color.
      Use sparingly for highlights, indicators and special emphasis. */
-  --accent: #06b6d4;
+  --accent: var(--cyan-60);
 
   /* Content displayed on accent backgrounds. */
-  --accent-foreground: #ffffff;
+  --accent-foreground: var(--gray-0);
 
   /* Hover state for accent elements. */
-  --accent-hover: #0891b2;
+  --accent-hover: var(--cyan-70);
 
-  /* Pressed state for accent elements. */
-  --accent-active: #0e7490;
+  /* Pressed/active state for accent elements. */
+  --accent-active: var(--cyan-80);
+
+  /* ==========================================================================
+     COLORS - LINKS & INTERACTIVE CONTENT
+     ========================================================================== */
+
+  /* Default link color. */
+  --link: var(--blue-60);
+
+  /* Hovered link color. */
+  --link-hover: var(--blue-70);
+
+  /* Visited link color.
+     Keep this distinct only when visited-state feedback is useful. */
+  --link-visited: var(--purple-70);
 
   /* ==========================================================================
      COLORS - FEEDBACK STATES
@@ -81,27 +200,39 @@
 
   /* Success state.
      Use for completed actions and positive indicators. */
-  --success: #22c55e;
-
-  --success-foreground: #ffffff;
+  --success: var(--green-60);
+  --success-hover: var(--green-70);
+  --success-active: var(--green-80);
+  --success-foreground: var(--gray-0);
+  --success-background: var(--green-10);
+  --success-border: var(--green-30);
 
   /* Warning state.
      Use for cautions and non-critical issues. */
-  --warning: #f59e0b;
-
-  --warning-foreground: #ffffff;
+  --warning: var(--yellow-30);
+  --warning-hover: var(--yellow-40);
+  --warning-active: var(--yellow-50);
+  --warning-foreground: var(--gray-100);
+  --warning-background: var(--yellow-10);
+  --warning-border: var(--yellow-30);
 
   /* Error state.
      Use for validation errors and destructive actions. */
-  --error: #ef4444;
-
-  --error-foreground: #ffffff;
+  --error: var(--red-60);
+  --error-hover: var(--red-70);
+  --error-active: var(--red-80);
+  --error-foreground: var(--gray-0);
+  --error-background: var(--red-10);
+  --error-border: var(--red-30);
 
   /* Informational state.
      Use for notices and informational banners. */
-  --info: #38bdf8;
-
-  --info-foreground: #ffffff;
+  --info: var(--cyan-60);
+  --info-hover: var(--cyan-70);
+  --info-active: var(--cyan-80);
+  --info-foreground: var(--gray-0);
+  --info-background: var(--cyan-10);
+  --info-border: var(--cyan-30);
 
   /* ==========================================================================
      COLORS - SELECTION
@@ -109,78 +240,109 @@
 
   /* Selected item background.
      Use for navigation, tabs, menus and selected rows. */
-  --selected: #e0e7ff;
+  --selected: var(--blue-20);
 
   /* Content displayed on selected backgrounds. */
-  --selected-foreground: #312e81;
+  --selected-foreground: var(--blue-80);
 
   /* ==========================================================================
-     COLORS - MUTED
+     COLORS - MUTED & TEXT HIERARCHY
      ========================================================================== */
 
   /* Muted background.
      Use for placeholders and subtle UI regions. */
-  --muted: #e5e7eb;
+  --muted: var(--gray-10);
 
-  /* Muted text color.
+  /* Secondary text color.
      Use for descriptions, hints and secondary information. */
-  --muted-foreground: #64748b;
+  --muted-foreground: var(--gray-70);
+
+  /* Primary text token. */
+  --text-primary: var(--gray-100);
+
+  /* Secondary text token. */
+  --text-secondary: var(--gray-70);
+
+  /* Placeholder text. */
+  --text-placeholder: var(--gray-60);
+
+  /* Disabled text. */
+  --text-disabled: var(--gray-50);
 
   /* ==========================================================================
      COLORS - INPUTS
      ========================================================================== */
 
   /* Input background. */
-  --input: #ffffff;
+  --input: var(--gray-0);
 
   /* Default input border. */
-  --input-border: #cbd5e1;
+  --input-border: var(--gray-40);
+
+  /* Hovered input border. */
+  --input-border-hover: var(--gray-60);
 
   /* Input focus state. */
-  --input-focus: #6366f1;
+  --input-focus: var(--blue-60);
 
   /* ==========================================================================
      COLORS - DISABLED
      ========================================================================== */
 
   /* Disabled component background. */
-  --disabled: #e2e8f0;
+  --disabled: var(--gray-20);
 
   /* Disabled component content. */
-  --disabled-foreground: #94a3b8;
+  --disabled-foreground: var(--gray-50);
 
   /* ==========================================================================
      COLORS - BORDERS
      ========================================================================== */
 
+  /* Subtle border for low-emphasis separation. */
+  --border-subtle: var(--gray-20);
+
   /* Default border color. */
-  --border: #dbe3ed;
+  --border: var(--gray-30);
+
+  /* Strong border for emphasized separation. */
+  --border-strong: var(--gray-60);
 
   /* Focus ring color.
      Use for accessibility indicators. */
-  --ring: #6366f1;
+  --ring: var(--blue-60);
 
   /* ==========================================================================
-     CHARTS
+     COLORS - CHARTS
      ========================================================================== */
 
   /* Financial series / primary metric */
-  --chart-1: #6366f1;
+  --chart-1: var(--blue-60);
 
   /* Positive metric */
-  --chart-2: #22c55e;
+  --chart-2: var(--green-50);
 
   /* Warning metric */
-  --chart-3: #f59e0b;
+  --chart-3: var(--yellow-40);
 
   /* Negative metric */
-  --chart-4: #ef4444;
+  --chart-4: var(--red-60);
 
   /* Additional series */
-  --chart-5: #06b6d4;
+  --chart-5: var(--cyan-60);
 
   /* Additional series */
-  --chart-6: #8b5cf6;
+  --chart-6: var(--purple-60);
+
+  /* ==========================================================================
+     COLORS - OVERLAYS
+     ========================================================================== */
+
+  /* Overlay behind modals, drawers and dialogs. */
+  --overlay: rgba(22, 22, 22, 0.50);
+
+  /* Strong overlay for critical dialogs. */
+  --overlay-strong: rgba(22, 22, 22, 0.70);
 
   /* ==========================================================================
      TYPOGRAPHY
@@ -343,69 +505,142 @@
 
   /* Large desktop width */
   --container-xl: 1280px;
+
+  /* ==========================================================================
+     OVERLAYS
+     ========================================================================== */
+
+   /* Overlay behind modals, drawers and dialogs */
+   --overlay: rgba(15, 23, 42, 0.50);
+
+   /* Strong overlay for critical dialogs */
+   --overlay-strong: rgba(15, 23, 42, 0.70);
 }
 
 /* ==========================================================================
    DARK THEME
    ========================================================================== */
 
+/*
+ * Dark mode follows a Carbon Gray 90-style foundation:
+ * - Gray 100 is reserved for the deepest application background.
+ * - Gray 90 is used for raised layers.
+ * - Gray 80/70 provide progressively lighter surfaces and borders.
+ * Interactive colors are adjusted to remain visible on dark surfaces.
+ */
+
 .dark {
-  --background: #0f0f0e;
-  --foreground: #f8fafc;
+  /* Content & surfaces */
+  --background: var(--gray-100);
+  --foreground: var(--gray-10);
 
-  --surface: #162033;
-  --surface-foreground: #f8fafc;
+  --surface: var(--gray-90);
+  --surface-foreground: var(--gray-10);
 
-  --card: #1e293b;
-  --card-foreground: #f8fafc;
+  --card: var(--gray-90);
+  --card-foreground: var(--gray-10);
 
-  --primary: #818cf8;
-  --primary-foreground: #ffffff;
-  --primary-hover: #a5b4fc;
-  --primary-active: #6366f1;
+  --layer: var(--gray-90);
+  --layer-hover: var(--gray-80);
+  --layer-active: var(--gray-70);
 
-  --secondary: #334155;
-  --secondary-foreground: #f8fafc;
-  --secondary-hover: #475569;
-  --secondary-active: #64748b;
+  /* Primary actions */
+  --primary: var(--blue-50);
+  --primary-foreground: var(--gray-100);
+  --primary-hover: var(--blue-40);
+  --primary-active: var(--blue-30);
 
-  --accent: #22d3ee;
-  --accent-foreground: #082f49;
-  --accent-hover: #67e8f9;
-  --accent-active: #06b6d4;
+  /* Secondary actions */
+  --secondary: var(--gray-60);
+  --secondary-foreground: var(--gray-10);
+  --secondary-hover: var(--gray-50);
+  --secondary-active: var(--gray-40);
 
-  --success: #4ade80;
-  --warning: #fbbf24;
-  --error: #f87171;
-  --info: #7dd3fc;
+  /* Accent */
+  --accent: var(--cyan-40);
+  --accent-foreground: var(--gray-100);
+  --accent-hover: var(--cyan-30);
+  --accent-active: var(--cyan-20);
 
-  --selected: #312e81;
-  --selected-foreground: #e0e7ff;
+  /* Links */
+  --link: var(--blue-40);
+  --link-hover: var(--blue-30);
+  --link-visited: var(--purple-40);
 
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
+  /* Feedback states */
+  --success: var(--green-40);
+  --success-hover: var(--green-30);
+  --success-active: var(--green-20);
+  --success-foreground: var(--gray-100);
+  --success-background: var(--green-90);
+  --success-border: var(--green-70);
 
-  --input: #1e293b;
-  --input-border: #475569;
-  --input-focus: #818cf8;
+  --warning: var(--yellow-30);
+  --warning-hover: var(--yellow-20);
+  --warning-active: var(--yellow-10);
+  --warning-foreground: var(--gray-100);
+  --warning-background: var(--yellow-90);
+  --warning-border: var(--yellow-70);
 
-  --disabled: #334155;
-  --disabled-foreground: #64748b;
+  --error: var(--red-50);
+  --error-hover: var(--red-40);
+  --error-active: var(--red-30);
+  --error-foreground: var(--gray-100);
+  --error-background: var(--red-90);
+  --error-border: var(--red-70);
 
-  --border: #334155;
-  --ring: #818cf8;
+  --info: var(--cyan-40);
+  --info-hover: var(--cyan-30);
+  --info-active: var(--cyan-20);
+  --info-foreground: var(--gray-100);
+  --info-background: var(--cyan-90);
+  --info-border: var(--cyan-70);
 
-  --chart-1: #818cf8;
-  --chart-2: #4ade80;
-  --chart-3: #fbbf24;
-  --chart-4: #f87171;
-  --chart-5: #22d3ee;
-  --chart-6: #c084fc;
+  /* Selection */
+  --selected: var(--blue-80);
+  --selected-foreground: var(--blue-20);
 
+  /* Muted & text hierarchy */
+  --muted: var(--gray-90);
+  --muted-foreground: var(--gray-40);
+
+  --text-primary: var(--gray-10);
+  --text-secondary: var(--gray-30);
+  --text-placeholder: var(--gray-50);
+  --text-disabled: var(--gray-60);
+
+  /* Inputs */
+  --input: var(--gray-90);
+  --input-border: var(--gray-60);
+  --input-border-hover: var(--gray-40);
+  --input-focus: var(--blue-50);
+
+  /* Disabled */
+  --disabled: var(--gray-80);
+  --disabled-foreground: var(--gray-60);
+
+  /* Borders */
+  --border-subtle: var(--gray-80);
+  --border: var(--gray-70);
+  --border-strong: var(--gray-50);
+  --ring: var(--blue-40);
+
+  /* Charts */
+  --chart-1: var(--blue-40);
+  --chart-2: var(--green-40);
+  --chart-3: var(--yellow-30);
+  --chart-4: var(--red-50);
+  --chart-5: var(--cyan-40);
+  --chart-6: var(--purple-40);
+
+  /* Shadows and overlays */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.45);
   --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.55);
+
+  --overlay: rgba(0, 0, 0, 0.60);
+  --overlay-strong: rgba(0, 0, 0, 0.80);
 }
 
 #root {
@@ -429,7 +664,7 @@ h1{
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
-  color: var(--text-h);
+  color: var(--text-primary);
   margin: 0;
 }
 
