@@ -1,0 +1,10 @@
+.payroll__section {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+    padding: var(--space-4);
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border: var(--border-width-xs) solid var(--border);
+    border-radius: var(--radius-lg);
+}

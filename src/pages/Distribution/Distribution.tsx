@@ -3,9 +3,9 @@ import { PayrollSectionComponent } from '../../components';
 
 export function Distribution() {
     return (
-        <>
-            <span>Distribution</span>
+        <section className={styles.view}>
             <PayrollSectionComponent></PayrollSectionComponent>
-        </>
+            <PayrollSectionComponent></PayrollSectionComponent>
+        </section>
     )
 }

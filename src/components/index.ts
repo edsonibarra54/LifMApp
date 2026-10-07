@@ -4,3 +4,4 @@ export * from './IconButtonComponent';
 export * from './DrawerComponent';
 export * from './TabsComponent';
 export * from './PayrollSectionComponent';
+export * from './SliderComponent';
