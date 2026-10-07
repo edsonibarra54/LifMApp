@@ -35,12 +35,16 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  align-items: center;
 }
 
 .content__header {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: var(--space-5) var(--space-4);
+  box-sizing: border-box;
 }
 
 .header__left {
@@ -52,10 +56,6 @@
 
 .header__menu {
   color: var(--secondary-foreground);
-}
-
-header {
-  margin: var(--space-5) var(--space-4);
 }
 
 .headerTitle {

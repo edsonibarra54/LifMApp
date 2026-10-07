@@ -1,0 +1,29 @@
+.tab {
+    width: fit-content;
+    padding: var(--space-2) var(--space-4);
+    color: var(--secondary-foreground);
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-md);
+    text-decoration: none;
+}
+
+.tab:hover:not(.disabled) {
+    background-color: var(--secondary-hover);
+    cursor: pointer;
+}
+
+.tab:active:not(.disabled) {
+    background-color: var(--secondary-active);
+}
+.currentTab:not(.disabled) {
+    background-color: var(--selected);
+}
+
+.disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+}
