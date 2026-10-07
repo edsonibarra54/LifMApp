@@ -1,0 +1,11 @@
+.view {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.addSection {
+    width: 100%;
+    outline-style: dashed;
+}
