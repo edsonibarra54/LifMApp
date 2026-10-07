@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { HabitTracker, MedicalOrganizer, PaysheetOrganizer, NotFound, Distribution, NewReport, MyReports } from "../pages";
-import { AppLayout } from '../layouts';
+import { HabitTracker, MedicalOrganizer, NotFound, Distribution, NewReport, MyReports } from "../pages";
+import { AppLayout, PaysheetOrganizerLayout } from '../layouts';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/paysheet-organizer",
-        element: <PaysheetOrganizer />,
+        element: <PaysheetOrganizerLayout />,
         handle: {
           title: "Paysheet Organizer",
           subtitle: "Organize fortnight income",
