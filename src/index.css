@@ -532,7 +532,7 @@
 .dark {
   /* Content & surfaces */
   --background: var(--gray-100);
-  --foreground: var(--gray-10);
+  --foreground: var(--gray-0);
 
   --surface: var(--gray-90);
   --surface-foreground: var(--gray-10);
@@ -661,7 +661,7 @@ body {
 }
 
 h1{
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
   line-height: 20px;
   color: var(--text-primary);

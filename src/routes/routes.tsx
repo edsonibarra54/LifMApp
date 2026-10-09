@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { HabitTracker, MedicalOrganizer, NotFound, Distribution, NewReport, MyReports } from "../pages";
+import { HabitTracker, MedicalOrganizer, NotFound, Distribution, NewReport, MyReports, Login } from "../pages";
 import { AppLayout, PaysheetOrganizerLayout } from '../layouts';
 
 const router = createBrowserRouter([
@@ -49,6 +49,10 @@ const router = createBrowserRouter([
         ]
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />
   },
   {
     path: "/*",

@@ -4,3 +4,4 @@ export * from './NotFoundPage';
 export * from './Distribution';
 export * from './NewReport';
 export * from './MyReports';
+export * from './Login';
