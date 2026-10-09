@@ -1,8 +1,8 @@
-import styles from './PaysheetOrganizer.module.css';
+import styles from './PaysheetOrganizerLayout.module.css';
 import { Outlet } from 'react-router'
 import { TabsComponent, TabComponent } from '../../components';
 
-export function PaysheetOrganizer() {
+export function PaysheetOrganizerLayout() {
     return (
         <section className={styles.view}>
             <TabsComponent>

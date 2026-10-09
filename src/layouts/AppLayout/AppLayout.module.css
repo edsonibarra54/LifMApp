@@ -68,13 +68,3 @@
     line-height: var(--line-height-tight);
   }
 }
-
-.toggle {
-  cursor: pointer;
-  color: var(--secondary-foreground);
-  transition: all var(--transition-normal) ease;
-}
-
-.toggle:hover {
-  color: var(--secondary-hover);
-}

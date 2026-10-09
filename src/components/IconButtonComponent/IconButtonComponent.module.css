@@ -44,7 +44,7 @@
    Color schemes
    ========================================================================== */
 
-.primary {
+.default {
     --btn-color: var(--primary);
     --btn-hover: var(--primary-hover);
     --btn-active: var(--primary-active);
