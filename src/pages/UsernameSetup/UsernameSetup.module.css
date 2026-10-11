@@ -1,0 +1,82 @@
+.view {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-6);
+
+    p {
+        color: var(--muted-foreground);
+    }
+}
+
+.logo__section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--background)
+}
+
+.header__logo {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+
+.labels {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: var(--space-6);
+
+    p {
+        font-weight: var(--font-weight-normal);
+        font-size: var(--font-size-xs);
+        line-height: var(--line-height-normal);
+        text-align: center;
+    }
+}
+
+.principalLabel {
+    color: var(--muted-foreground);
+}
+
+.labels__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+
+    h2 {
+        margin: 0;
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-3xl);
+        line-height: var(--line-height-tight);
+    }
+
+    p {
+        font-weight: var(--font-weight-normal);
+        font-size: var(--font-size-sm);
+        line-height: var(--line-height-normal);
+        text-align: left;
+    }
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-3);
+
+    span {
+        width: var(--space-5);
+        height: var(--space-5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--foreground);
+        background-color: var(--card);
+        border-radius: var(--radius-full);
+    }
+}

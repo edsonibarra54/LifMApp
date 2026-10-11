@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { HabitTracker, MedicalOrganizer, PaysheetOrganizer, NotFound } from "../pages";
-import { AppLayout } from '../layouts';
+import { HabitTracker, MedicalOrganizer, NotFound, Distribution, NewReport, MyReports, Login, UsernameSetup } from "../pages";
+import { AppLayout, AuthLayout, PaysheetOrganizerLayout } from '../layouts';
 
 const router = createBrowserRouter([
   {
@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Navigate to="/paysheet-organizer" replace />,
+        element: <Navigate to="/paysheet-organizer/distribution" replace />,
       },
       {
         path: "/habit-tracker",
@@ -28,13 +28,45 @@ const router = createBrowserRouter([
       },
       {
         path: "/paysheet-organizer",
-        element: <PaysheetOrganizer />,
+        element: <PaysheetOrganizerLayout />,
         handle: {
           title: "Paysheet Organizer",
           subtitle: "Organize fortnight income",
         },
+        children: [
+          {
+            path: 'distribution',
+            element: <Distribution />
+          },
+          {
+            path: 'new-report',
+            element: <NewReport />
+          },
+          {
+            path: 'my-reports',
+            element: <MyReports />
+          }
+        ]
       },
     ],
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "",
+        element: <Login />,
+      },
+      {
+        path: "username",
+        element: <UsernameSetup />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />
   },
   {
     path: "/*",
