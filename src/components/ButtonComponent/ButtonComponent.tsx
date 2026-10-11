@@ -8,6 +8,8 @@ type ButtonColor = 'default' | 'neutral' | 'danger';
 type ButtonComponentProps = {
     className?: string;
     children?: ReactNode;
+    leftIcon?: ReactNode;
+    rightIcon?: ReactNode;
     variant?: ButtonVariant;
     size?: ButtonSize;
     color?: ButtonColor;
@@ -15,10 +17,16 @@ type ButtonComponentProps = {
     onClick?: () => void;
 };
 
-export function ButtonComponent({ className, children, variant = "fill", color = 'default', size='medium', disabled = false, onClick}: ButtonComponentProps) {
+export function ButtonComponent({ className, children, leftIcon, rightIcon, variant = "fill", color = 'default', size='medium', disabled = false, onClick}: ButtonComponentProps) {
     return (
         <button disabled={disabled} className={`${styles.button} ${styles[size]} ${styles[variant]} ${styles[color]} ${className ?? ''}`} onClick={onClick}>
+            {leftIcon ? (
+                <div className={styles.icon}>{leftIcon}</div>
+            ) : null}
             {children}
+            {rightIcon ? (
+                <div className={styles.icon}>{rightIcon}</div>
+            ) : null}
         </button>
     )
 }

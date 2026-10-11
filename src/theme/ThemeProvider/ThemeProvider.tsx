@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -9,7 +9,11 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export function ThemeProvider({ children, }: { children: React.ReactNode;}) {
+type ThemeProps = {
+    children: ReactNode;
+};
+
+export function ThemeProvider({ children, }: ThemeProps) {
     const storedTheme = localStorage.getItem('theme');
 
     const [theme, setTheme] = useState<Theme>(
@@ -46,13 +50,3 @@ export function useTheme() {
 
     return context;
 }
-
-// function Header() {
-//     const { toggleTheme } = useTheme();
-
-//     return (
-//         <ButtonComponent onClick={toggleTheme}>
-//             Toggle Theme
-//         </ButtonComponent>
-//     );
-// }
