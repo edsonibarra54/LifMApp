@@ -1,8 +1,13 @@
 import styles from './Login.module.css';
 import Logo from '../../assets/LifMApp_Logo.svg?react';
 import { ButtonComponent } from '../../components';
+import { useAuth } from '../../hooks';
 
 export function Login() {
+    const { signIn, isAuthenticated, user } = useAuth();
+
+    console.log(isAuthenticated);
+    console.log(user);
 
     return (
         <div className={styles.view}>
@@ -30,7 +35,7 @@ export function Login() {
                         <h2>Organize every chore with confidence</h2>
                         <p>Sign in to keep your distributions, reports, and future goals secure.</p>
                     </div>
-                    <ButtonComponent className={styles.button} color='neutral'>
+                    <ButtonComponent className={styles.button} color='neutral' onClick={signIn}>
                         <span>G</span>
                         Continue with Google
                     </ButtonComponent>
