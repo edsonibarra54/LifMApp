@@ -1,77 +1,96 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import { HabitTracker, MedicalOrganizer, NotFound, Distribution, NewReport, MyReports, Login, UsernameSetup } from "../pages";
-import { AppLayout, AuthLayout, PaysheetOrganizerLayout } from '../layouts';
+import { AppLayout, AuthLayout, PaysheetOrganizerLayout } from "../layouts";
+import { PublicRoute } from "./PublicRoute";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
-    element: <AppLayout />,
+    element: <PublicRoute />,
     children: [
       {
-        path: "/",
-        element: <Navigate to="/paysheet-organizer/distribution" replace />,
-      },
-      {
-        path: "/habit-tracker",
-        element: <HabitTracker />,
-        handle: {
-          title: "Habit Tracker",
-          subtitle: "Track habits through month",
-        },
-      },
-      {
-        path: "/medical-organizer",
-        element: <MedicalOrganizer />,
-        handle: {
-          title: "Medical Organizer",
-          subtitle: "Organize medicine schedules",
-        },
-      },
-      {
-        path: "/paysheet-organizer",
-        element: <PaysheetOrganizerLayout />,
-        handle: {
-          title: "Paysheet Organizer",
-          subtitle: "Organize fortnight income",
-        },
+        path: "/auth",
+        element: <AuthLayout />,
         children: [
           {
-            path: 'distribution',
-            element: <Distribution />
+            index: true,
+            element: <Login />,
           },
           {
-            path: 'new-report',
-            element: <NewReport />
+            path: "username",
+            element: <UsernameSetup />,
           },
-          {
-            path: 'my-reports',
-            element: <MyReports />
-          }
-        ]
+        ],
       },
-    ],
-  },
-  {
-    path: "/auth",
-    element: <AuthLayout />,
-    children: [
       {
-        path: "",
+        path: "/login",
         element: <Login />,
       },
+    ],
+  },
+
+  {
+    element: <ProtectedRoute />,
+    children: [
       {
-        path: "username",
-        element: <UsernameSetup />,
+        element: <AppLayout />,
+        children: [
+          {
+            path: "/",
+            element: (
+              <Navigate
+                to="/paysheet-organizer/distribution"
+                replace
+              />
+            ),
+          },
+          {
+            path: "/habit-tracker",
+            element: <HabitTracker />,
+            handle: {
+              title: "Habit Tracker",
+              subtitle: "Track habits through month",
+            },
+          },
+          {
+            path: "/medical-organizer",
+            element: <MedicalOrganizer />,
+            handle: {
+              title: "Medical Organizer",
+              subtitle: "Organize medicine schedules",
+            },
+          },
+          {
+            path: "/paysheet-organizer",
+            element: <PaysheetOrganizerLayout />,
+            handle: {
+              title: "Paysheet Organizer",
+              subtitle: "Organize fortnight income",
+            },
+            children: [
+              {
+                path: "distribution",
+                element: <Distribution />,
+              },
+              {
+                path: "new-report",
+                element: <NewReport />,
+              },
+              {
+                path: "my-reports",
+                element: <MyReports />,
+              },
+            ],
+          },
+        ],
       },
     ],
   },
+
   {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/*",
-    element: <NotFound />
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
-export default router
+export default router;
