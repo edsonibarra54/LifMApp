@@ -6,3 +6,4 @@ export * from './NewReport';
 export * from './MyReports';
 export * from './Login';
 export * from './UsernameSetup';
+export * from './LoadingPage';
