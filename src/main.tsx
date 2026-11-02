@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { RouterProvider } from "react-router/dom";
 import { ThemeProvider } from './theme';
+import { AuthProvider } from './contexts';
 import router from "./routes/routes.tsx";
 import './index.css'
 
@@ -10,6 +11,8 @@ if (localStorage.getItem('theme') === 'dark') {
 
 createRoot(document.getElementById('root')!).render(
   <ThemeProvider>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </ThemeProvider>
 )

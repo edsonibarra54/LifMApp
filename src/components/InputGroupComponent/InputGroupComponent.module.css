@@ -1,0 +1,15 @@
+.component {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.label {
+    color: var(--foreground);
+    font-size: var(--font-size-xs);
+}
+
+.helper {
+    color: var(--muted-foreground);
+    font-size: var(--font-size-xs);
+}

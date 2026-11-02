@@ -1,0 +1,26 @@
+.component {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: var(--layer);
+    padding: var(--space-3);
+    border: var(--border-width-xs) solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+}
+
+.prefix {
+    line-height: var(--line-height-tight);
+}
+
+.input {
+    width: 100%;
+    color: var(--foreground);
+    background-color: transparent;
+    border: 0;
+    font-size: var(--font-size-sm);
+}
+
+.input:focus {
+    outline: none;
+}
