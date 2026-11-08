@@ -12,6 +12,15 @@ export function Distribution() {
     const { firebaseUser } = useAuth();
     const [sections, setSections] = useState<PaysheetSection[]>([]);
 
+    const loadSections = async () => {
+        if (!firebaseUser) return;
+
+        const repository = new PaysheetSectionRepository();
+        const data = await repository.getAllByUserId(firebaseUser.uid);
+
+        setSections(data);
+    }
+
     const createSection = async () => {
         if (!firebaseUser) return;
 
@@ -26,27 +35,17 @@ export function Distribution() {
             createdAt: serverTimestamp(),
         });
 
-        const data = await repository.getAllByUserId(firebaseUser.uid);
-        setSections(data);
+        loadSections();
     }
 
     useEffect(() => {
-        const loadSections = async () => {
-            if (!firebaseUser) return;
-
-            const repository = new PaysheetSectionRepository();
-            const data = await repository.getAllByUserId(firebaseUser.uid);
-
-            setSections(data);
-        }
-
         loadSections();
     }, [firebaseUser]);
 
     return (
         <section className={styles.view}>
             {sections.map(section => (
-                <PayrollSectionComponent key={section.id} name={section.name} icon={section.icon} color={section.color} percentage={section.percentage}/>
+                <PayrollSectionComponent key={section.id} id={section.id} name={section.name} icon={section.icon} color={section.color} percentage={section.percentage} onRemove={loadSections}/>
             ))}
             <ButtonComponent variant='outlined' color='neutral' leftIcon={<Add/>} className={styles.addSection} onClick={createSection}>Add Section</ButtonComponent>
         </section>

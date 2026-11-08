@@ -47,3 +47,7 @@
     padding: var(--space-3);
     border-radius: var(--radius-md);
 }
+
+.modal {
+    width: 350px;
+}
