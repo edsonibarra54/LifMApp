@@ -7,12 +7,15 @@ import { useState } from 'react';
 type IconVariant = keyof typeof PAYROLL_ICONS;
 
 type PayrollSectionComponentProps = {
+    name?: string,
     icon?: IconVariant,
     color?: string,
+    percentage?: number,
 };
 
-export function PayrollSectionComponent ({icon = "payments", color = "#ff0000"}: PayrollSectionComponentProps) {
-    const [percentage, setPercentage] = useState(0);
+export function PayrollSectionComponent ({name = 'New Section', icon = "payments", color = "#ff0000", percentage = 0}: PayrollSectionComponentProps) {
+    const [currentName, setCurrentName] = useState(name);
+    const [currentPercentage, setCurrentPercentage] = useState(percentage);
     const [currentColor, setCurrentColor] = useState(color);
     const [currentIcon, setCurrentIcon] = useState(icon);
     const [expandedPanel, setExpandedPanel] = useState<'icon' | 'color' | null>(null);
@@ -32,13 +35,14 @@ export function PayrollSectionComponent ({icon = "payments", color = "#ff0000"}:
             <div className={styles.section__header}>
                 <div className={styles.header__left}>
                     <div className={styles.colorPicker} style={{ backgroundColor: currentColor }} onClick={() => togglePanel('color')}></div>
+                    <div>{currentColor}</div>
                     <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => togglePanel('icon')}>
                         <IconComponent/>
                     </IconButtonComponent>
-                    <EditableLabelComponent value='Investment'></EditableLabelComponent>
+                    <EditableLabelComponent value={currentName}></EditableLabelComponent>
                 </div>
                 <div className={styles.header__right}>
-                    <span className={styles.percentage}>{percentage}%</span>
+                    <span className={styles.percentage}>{currentPercentage}%</span>
                     <IconButtonComponent variant="ghost" color='neutral' size='small'>
                         <Close/>
                     </IconButtonComponent>
@@ -55,7 +59,7 @@ export function PayrollSectionComponent ({icon = "payments", color = "#ff0000"}:
                     <ColorPickerPanel colors={PAYROLL_COLORS} value={currentColor} onChange={(e) => setCurrentColor(e)}/>
                 </div>
             )}
-            <SliderComponent step={1} onChange={setPercentage}/>
+            <SliderComponent step={1} value={currentPercentage} onChange={setCurrentPercentage}/>
         </div>
     )
 }

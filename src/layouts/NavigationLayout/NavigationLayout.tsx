@@ -25,7 +25,8 @@ export function NavigationLayout() {
       </div>
       <div className={styles.navigation__footer}>
         <div className={styles.user}>
-          <span className={styles.user__name}>@{user?.email}</span>
+          <span className={styles.user__name}>{user?.username}</span>
+          <span className={styles.user__google}>@{user?.email}</span>
           <span className={styles.user__google}>Google Account</span>
         </div>
         <ButtonComponent size='small' variant='ghost' color='neutral' leftIcon={<Logout/>} onClick={signOut} className={styles.logoutButton}>Sign out</ButtonComponent>
