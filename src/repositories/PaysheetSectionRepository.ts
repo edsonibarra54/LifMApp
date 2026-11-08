@@ -1,6 +1,6 @@
-import { addDoc, collection, doc, DocumentSnapshot, getDoc, getDocs, query, QueryDocumentSnapshot, where } from "firebase/firestore";
+import { addDoc, collection, doc, DocumentSnapshot, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore";
 import { db } from "../firebase";
-import type { PaysheetSection } from "../models/PaysheetSection";
+import type { PaysheetSection, CreatePaysheetSection } from "../models";
 
 export class PaysheetSectionRepository {
     private mapToPaysheetSection(
@@ -15,6 +15,7 @@ export class PaysheetSectionRepository {
             icon: data?.icon,
             color: data?.color,
             percentage: data?.percentage,
+            createdAt: data?.createdAt,
         };
     }
 
@@ -29,22 +30,11 @@ export class PaysheetSectionRepository {
         return this.mapToPaysheetSection(snapshot);
     }
 
-    async getAll(): Promise<PaysheetSection[]> {
-        const q = query(
-            collection(db, 'paysheet_sections')
-        );
-
-        const snapshot = await getDocs(q);
-
-        return snapshot.docs.map(doc =>
-            this.mapToPaysheetSection(doc)
-        );
-    }
-
     async getAllByUserId(userId: string): Promise<PaysheetSection[]> {
         const q = query(
             collection(db, 'paysheet_sections'),
-            where('userId', '==', userId)
+            where('userId', '==', userId),
+            orderBy("createdAt", "asc")
         );
 
         const snapshot = await getDocs(q);
@@ -56,11 +46,12 @@ export class PaysheetSectionRepository {
             icon: doc.data().icon,
             color: doc.data().color,
             percentage: doc.data().percentage,
+            createdAt: doc.data().createdAt,
         }));
     }
 
-    async create(section: PaysheetSection): Promise<void> {
-        const { id, ...data } = section;
+    async create(section: CreatePaysheetSection): Promise<void> {
+        const { ...data } = section;
 
         await addDoc(
             collection(db, 'paysheet_sections'),

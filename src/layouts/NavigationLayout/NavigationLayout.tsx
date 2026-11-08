@@ -10,8 +10,6 @@ import { useAuth } from '../../hooks';
 export function NavigationLayout() {
   const { user, signOut } = useAuth();
 
-  console.log(user);
-
   return (
     <section className={styles.app__navigation}>
       <div className={styles.navigation__header}>

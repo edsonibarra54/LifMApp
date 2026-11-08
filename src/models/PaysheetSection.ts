@@ -1,3 +1,4 @@
+import type { FieldValue } from 'firebase/firestore';
 import { PAYROLL_ICONS } from '../constants';
 
 export interface PaysheetSection {
@@ -7,4 +8,5 @@ export interface PaysheetSection {
     icon: keyof typeof PAYROLL_ICONS;
     color: string;
     percentage: number;
+    createdAt: FieldValue;
 }
