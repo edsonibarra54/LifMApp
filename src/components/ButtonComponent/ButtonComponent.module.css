@@ -68,6 +68,13 @@
     --btn-foreground: var(--secondary-foreground);
 }
 
+.danger {
+    --btn-color: var(--error);
+    --btn-hover: var(--error-hover);
+    --btn-active: var(--error-active);
+    --btn-foreground: var(--error-foreground);
+}
+
 /* ==========================================================================
    Fill
    ========================================================================== */

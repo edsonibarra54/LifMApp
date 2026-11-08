@@ -10,3 +10,4 @@ export * from './SliderComponent';
 export * from './EditableLabelComponent';
 export * from './PayrollSectionComponent/ColorPickerPanel';
 export * from './PayrollSectionComponent/IconPickerPanel';
+export * from './ModalComponent';

@@ -557,15 +557,15 @@
 
   /* Primary actions */
   --primary: var(--blue-50);
-  --primary-foreground: var(--gray-100);
+  --primary-foreground: var(--gray-10);
   --primary-hover: var(--blue-40);
   --primary-active: var(--blue-30);
 
   /* Secondary actions */
-  --secondary: var(--gray-60);
+  --secondary: var(--gray-80);
   --secondary-foreground: var(--gray-10);
-  --secondary-hover: var(--gray-50);
-  --secondary-active: var(--gray-40);
+  --secondary-hover: var(--gray-70);
+  --secondary-active: var(--gray-60);
 
   /* Accent */
   --accent: var(--cyan-40);
@@ -596,7 +596,7 @@
   --error: var(--red-50);
   --error-hover: var(--red-40);
   --error-active: var(--red-30);
-  --error-foreground: var(--gray-100);
+  --error-foreground: var(--gray-10);
   --error-background: var(--red-90);
   --error-border: var(--red-70);
 
