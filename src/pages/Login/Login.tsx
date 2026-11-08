@@ -4,10 +4,7 @@ import { ButtonComponent } from '../../components';
 import { useAuth } from '../../hooks';
 
 export function Login() {
-    const { signIn, isAuthenticated, user } = useAuth();
-
-    console.log(isAuthenticated);
-    console.log(user);
+    const { signIn } = useAuth();
 
     return (
         <div className={styles.view}>
