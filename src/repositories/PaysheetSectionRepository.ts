@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, DocumentSnapshot, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, DocumentSnapshot, getDoc, getDocs, orderBy, query, QueryDocumentSnapshot, updateDoc, where } from "firebase/firestore";
 import { db } from "../firebase";
 import type { PaysheetSection, CreatePaysheetSection } from "../models";
 
@@ -59,7 +59,11 @@ export class PaysheetSectionRepository {
         );
     }
 
-    async update() {}
+    async update(id: string, data: Partial<Pick<PaysheetSection,'name' | 'icon' | 'color' | 'percentage'>>): Promise<void> {
+        const sectionRef = doc(db, 'paysheet_sections', id);
+
+        await updateDoc(sectionRef, data);
+    }
 
     async delete(id: string): Promise<void> {
         try {
