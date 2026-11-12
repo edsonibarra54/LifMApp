@@ -21,6 +21,7 @@
   --gray-70: #525252;
   --gray-80: #393939;
   --gray-90: #262626;
+  --gray-95: #202020;
   --gray-100: #161616;
 
   /* Brand / interactive palette */
@@ -101,7 +102,7 @@
 
   /* Main application background.
      Use for pages, screens and large layout areas. */
-  --background: var(--gray-0);
+  --background: var(--gray-10);
 
   /* Primary text color.
      Use for headings, body text and important content. */
@@ -303,7 +304,7 @@
   --border-subtle: var(--gray-20);
 
   /* Default border color. */
-  --border: var(--gray-30);
+  --border: var(--gray-20);
 
   /* Strong border for emphasized separation. */
   --border-strong: var(--gray-60);
@@ -547,7 +548,7 @@
   --surface: var(--gray-90);
   --surface-foreground: var(--gray-10);
 
-  --card: var(--gray-90);
+  --card: var(--gray-95);
   --card-foreground: var(--gray-10);
 
   --layer: var(--gray-90);
@@ -556,15 +557,15 @@
 
   /* Primary actions */
   --primary: var(--blue-50);
-  --primary-foreground: var(--gray-100);
+  --primary-foreground: var(--gray-10);
   --primary-hover: var(--blue-40);
   --primary-active: var(--blue-30);
 
   /* Secondary actions */
-  --secondary: var(--gray-60);
+  --secondary: var(--gray-80);
   --secondary-foreground: var(--gray-10);
-  --secondary-hover: var(--gray-50);
-  --secondary-active: var(--gray-40);
+  --secondary-hover: var(--gray-70);
+  --secondary-active: var(--gray-60);
 
   /* Accent */
   --accent: var(--cyan-40);
@@ -595,7 +596,7 @@
   --error: var(--red-50);
   --error-hover: var(--red-40);
   --error-active: var(--red-30);
-  --error-foreground: var(--gray-100);
+  --error-foreground: var(--gray-10);
   --error-background: var(--red-90);
   --error-border: var(--red-70);
 
@@ -631,7 +632,7 @@
 
   /* Borders */
   --border-subtle: var(--gray-80);
-  --border: var(--gray-70);
+  --border: var(--gray-80);
   --border-strong: var(--gray-50);
   --ring: var(--blue-40);
 

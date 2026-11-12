@@ -1,0 +1,64 @@
+.component {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.defaultColors {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colorButton {
+    padding: var(--space-2);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+}
+
+.color {
+    width: var(--space-5);
+    height: var(--space-5);
+    border-radius: var(--radius-full);
+    border-width: var(--border-width-sm);
+    border-style: solid;
+    border-color: transparent;
+
+    transition: transform 0.2s ease;
+}
+
+.colorButton:hover .color {
+    transform: scale(1.15);
+}
+
+.selected{
+    border-color: var(--foreground);
+}
+
+.line {
+    height: var(--space-5);
+    width: var(--border-width-xs);
+    background-color: var(--border);
+}
+
+.customColor {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.colorPicker {
+    width: var(--space-6);
+    height: var(--space-6);
+    border: transparent;
+    cursor: pointer;
+    overflow: hidden;
+    background: none;
+}
+
+.colorPciker__value {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    color: var(--muted-foreground);
+}
