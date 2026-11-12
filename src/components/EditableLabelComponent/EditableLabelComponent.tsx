@@ -7,25 +7,30 @@ import styles from './EditableLabelComponent.module.css';
     
 type EditableLabelComponentProps = {
     value?: string,
+    onChange?: (value: string) => void;
 };
 
-export function EditableLabelComponent({value = "new"}: EditableLabelComponentProps) {
+export function EditableLabelComponent({value = "new", onChange}: EditableLabelComponentProps) {
     const [open, setOpen] = useState(false);
-    const [currentValue, setCurrentValue] = useState(value);
     const [tempValue, setTempValue] = useState(value);
+
+    const confirmChange = () => {
+        setOpen(false);
+        onChange?.(tempValue);
+    };
     
     return (
         <div className={styles.component}>
             { !open ? (
                 <>
-                    <span className={styles.label}>{ currentValue }</span>
-                    <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => {setTempValue(currentValue); setOpen(true);}}><Edit/></IconButtonComponent>
+                    <span className={styles.label}>{ value }</span>
+                    <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => {setTempValue(value); setOpen(true);}}><Edit/></IconButtonComponent>
                 </>
             ) : (
                 <>
-                    <input defaultValue={tempValue} onChange={(e) => setTempValue(e.target.value)} className={`${styles.input} ${styles.label}`} maxLength={30}></input>
+                    <input value={tempValue} onChange={(e) => setTempValue(e.target.value)} className={`${styles.input} ${styles.label}`} maxLength={30}></input>
                     <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => setOpen(false)}><Close/></IconButtonComponent>
-                    <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => {setCurrentValue(tempValue); setOpen(false);}}><Check/></IconButtonComponent>
+                    <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={confirmChange}><Check/></IconButtonComponent>
                 </>
             )}
         </div>

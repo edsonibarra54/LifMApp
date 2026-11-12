@@ -3,7 +3,7 @@ import Close from '../../assets/icons/Close.svg?react';
 import Warning from '@mui/icons-material/WarningAmberOutlined';
 import { ColorPickerPanel, EditableLabelComponent, IconButtonComponent, IconPickerPanel, ModalComponent, SliderComponent } from '../../components';
 import { PAYROLL_ICONS, PAYROLL_COLORS } from '../../constants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks';
 import { PaysheetSectionRepository } from '../../repositories';
 
@@ -17,6 +17,8 @@ type PayrollSectionComponentProps = {
     percentage?: number,
     onRemove?: () => void;
 };
+
+const repository = new PaysheetSectionRepository();
 
 export function PayrollSectionComponent ({id, name = 'New Section', icon = "payments", color = "#ff0000", percentage = 0, onRemove}: PayrollSectionComponentProps) {
     const [currentName, setCurrentName] = useState(name);
@@ -38,10 +40,48 @@ export function PayrollSectionComponent ({id, name = 'New Section', icon = "paym
         );
     };
 
+    const handleColorChange = async (newColor: string) => {
+        setCurrentColor(newColor);
+        setExpandedPanel(null);
+
+        await repository.update(id, {
+            color: newColor
+        });
+    };
+
+    const handleIconChange = async (newIcon: IconVariant) => {
+        setCurrentIcon(newIcon);
+        setExpandedPanel(null);
+
+        await repository.update(id, {
+            icon: newIcon
+        });
+    };
+
+    const handleNameChange = async (newName: string) => {
+        setCurrentName(newName);
+
+        await repository.update(id, {
+            name: newName
+        });
+    }
+
+    const handlePercentageChange = async (newPercentage: number) => {
+        await repository.update(id, {
+            percentage: newPercentage
+        });
+    }
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            handlePercentageChange(currentPercentage);
+        }, 700);
+
+        return () => clearTimeout(timeout);
+    }, [currentPercentage]);
+
     const removeSection = async () => {
         if (!firebaseUser) return;
-
-        const repository = new PaysheetSectionRepository();
 
         await repository.delete(id);
 
@@ -58,7 +98,7 @@ export function PayrollSectionComponent ({id, name = 'New Section', icon = "paym
                     <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => togglePanel('icon')}>
                         <IconComponent/>
                     </IconButtonComponent>
-                    <EditableLabelComponent value={currentName}></EditableLabelComponent>
+                    <EditableLabelComponent value={currentName} onChange={(newValue) => { handleNameChange(newValue); }}></EditableLabelComponent>
                 </div>
                 <div className={styles.header__right}>
                     <span className={styles.percentage}>{currentPercentage}%</span>
@@ -70,12 +110,12 @@ export function PayrollSectionComponent ({id, name = 'New Section', icon = "paym
 
             {expandedPanel === 'icon' && (
                 <div className={styles.panel}>
-                    <IconPickerPanel icons={PAYROLL_ICONS} value={currentIcon} onChange={(e) => setCurrentIcon(e)}/>
+                    <IconPickerPanel icons={PAYROLL_ICONS} value={currentIcon} onChange={(e) => handleIconChange(e)}/>
                 </div>
             )}
             {expandedPanel === 'color' && (
                 <div className={styles.panel}>
-                    <ColorPickerPanel colors={PAYROLL_COLORS} value={currentColor} onChange={(e) => setCurrentColor(e)}/>
+                    <ColorPickerPanel colors={PAYROLL_COLORS} value={currentColor} onChange={(e) => handleColorChange(e)}/>
                 </div>
             )}
             <SliderComponent step={1} value={currentPercentage} onChange={setCurrentPercentage}/>
