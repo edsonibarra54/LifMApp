@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "483318882000",
+    "project_id": "lifmapp",
+    "storage_bucket": "lifmapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483318882000:android:a4fa4723ab0b18da1888d5",
+        "android_client_info": {
+          "package_name": "com.lifmapp.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483318882000-chanab71vq6k91arsqrp31208gupeg83.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lifmapp.app",
+            "certificate_hash": "5851a7fc55532105946405dedca6683f4312782f"
+          }
+        },
+        {
+          "client_id": "483318882000-3hd1bvtf9krpov34aid2pe869trhiboc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiesaEXIOE_DMQ2SQlIaJxOiAqb2u8Onk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483318882000-3hd1bvtf9krpov34aid2pe869trhiboc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

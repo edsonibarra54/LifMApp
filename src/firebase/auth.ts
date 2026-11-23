@@ -1,17 +1,25 @@
-import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, signInWithCredential, signOut } from 'firebase/auth';
+import { Capacitor } from '@capacitor/core';
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 import { auth } from './config';
 
 const provider = new GoogleAuthProvider();
 
 export async function loginWithGoogle() {
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    try {
+        if (Capacitor.isNativePlatform()) {
+            const result = await FirebaseAuthentication.signInWithGoogle();
+            const credential = GoogleAuthProvider.credential(result.credential?.idToken);
 
-    if (isMobile) {
-        await signInWithRedirect(auth, provider);
-        return;
+            await signInWithCredential(auth, credential);
+
+            return;
+        }
+
+        await signInWithPopup(auth, provider);
+    } catch (error) {
+        console.error("LOGIN FAILED", error);
     }
-    
-    await signInWithPopup(auth, provider);
 }
 
 export async function logout() {
