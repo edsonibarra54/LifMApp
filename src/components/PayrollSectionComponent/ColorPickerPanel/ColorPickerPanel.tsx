@@ -22,7 +22,7 @@ export function ColorPickerPanel({colors, value, onChange}: ColorPickerPanelProp
             <div className={styles.customColor}>
                 <input type='color' value={value} onChange={(e) => onChange?.(e.target.value)} className={styles.colorPicker}/>
                 <span>Custom</span>
-                <span className={styles.colorPciker__value}>{value}</span>
+                <span className={styles.colorPicker__value}>{value}</span>
             </div>
         </div>
     );

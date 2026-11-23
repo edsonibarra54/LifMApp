@@ -13,18 +13,28 @@
 .section__header,
 .header__left,
 .header__right {
+    min-width: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: var(--space-2);
 }
 
 .section__header {
+    flex: 1;
     justify-content: space-between;
 }
 
-.header__left,
-.header__right {
-    gap: var(--space-2);
+.header__left {
+    flex: 1;
+}
+
+.sectionName {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .colorPicker {
@@ -35,6 +45,10 @@
     cursor: pointer;
     overflow: hidden;
     background: none;
+}
+
+.mobile {
+    display: none;
 }
 
 .percentage {
@@ -50,4 +64,20 @@
 
 .modal {
     width: 350px;
+}
+
+@media (max-width: 640px) {
+    .desktop {
+        display: none !important; 
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .modal {
+        width: 100%;
+        max-width: 100%;
+        margin: var(--space-4);
+    }
 }

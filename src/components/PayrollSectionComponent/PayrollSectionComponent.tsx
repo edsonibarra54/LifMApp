@@ -1,7 +1,8 @@
 import styles from './PayrollSectionComponent.module.css';
 import Close from '../../assets/icons/Close.svg?react';
 import Warning from '@mui/icons-material/WarningAmberOutlined';
-import { ColorPickerPanel, EditableLabelComponent, IconButtonComponent, IconPickerPanel, ModalComponent, SliderComponent } from '../../components';
+import More from '@mui/icons-material/MoreVert';
+import { ColorPickerPanel, EditableLabelComponent, IconButtonComponent, IconPickerPanel, ModalComponent, SliderComponent, InputGroupComponent, TextFieldComponent } from '../../components';
 import { PAYROLL_ICONS, PAYROLL_COLORS } from '../../constants';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks';
@@ -22,15 +23,19 @@ const repository = new PaysheetSectionRepository();
 
 export function PayrollSectionComponent ({id, name = 'New Section', icon = "payments", color = "#ff0000", percentage = 0, onRemove}: PayrollSectionComponentProps) {
     const [currentName, setCurrentName] = useState(name);
+    const [tempValue, setTempValue] = useState(name);
     const [currentPercentage, setCurrentPercentage] = useState(percentage);
     const [currentColor, setCurrentColor] = useState(color);
     const [currentIcon, setCurrentIcon] = useState(icon);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditModalOpen, setisEditModalOpen] = useState(false);
     const [expandedPanel, setExpandedPanel] = useState<'icon' | 'color' | null>(null);
 
     const { firebaseUser } = useAuth();
 
     const IconComponent = PAYROLL_ICONS[currentIcon ?? 'payments'];
+    const MinLength = 5;
+    const MaxLength = 25;
 
     const togglePanel = ( panel: 'icon' | 'color' ) => {
         setExpandedPanel(
@@ -80,6 +85,26 @@ export function PayrollSectionComponent ({id, name = 'New Section', icon = "paym
         return () => clearTimeout(timeout);
     }, [currentPercentage]);
 
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        }
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isModalOpen]);
+
+    useEffect(() => {
+        if (isEditModalOpen) {
+            document.body.style.overflow = "hidden";
+        }
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isEditModalOpen]);
+
     const removeSection = async () => {
         if (!firebaseUser) return;
 
@@ -94,20 +119,22 @@ export function PayrollSectionComponent ({id, name = 'New Section', icon = "paym
             <div className={styles.section__header}>
                 <div className={styles.header__left}>
                     <div className={styles.colorPicker} style={{ backgroundColor: currentColor }} onClick={() => togglePanel('color')}></div>
-                    <div>{currentColor}</div>
                     <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => togglePanel('icon')}>
                         <IconComponent/>
                     </IconButtonComponent>
-                    <EditableLabelComponent value={currentName} onChange={(newValue) => { handleNameChange(newValue); }}></EditableLabelComponent>
+                    <EditableLabelComponent value={currentName} minLength={MinLength} maxLength={MaxLength} className={styles.desktop} onChange={(newValue) => { handleNameChange(newValue); }}></EditableLabelComponent>
+                    <span className={`${styles.sectionName} ${styles.mobile}`}>{currentName}</span>
                 </div>
                 <div className={styles.header__right}>
                     <span className={styles.percentage}>{currentPercentage}%</span>
-                    <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => setIsModalOpen(true)}>
+                    <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => setIsModalOpen(true)} className={styles.desktop}>
                         <Close/>
+                    </IconButtonComponent>
+                    <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={() => {setisEditModalOpen(true); setTempValue(currentName);}} className={styles.mobile}>
+                        <More/>
                     </IconButtonComponent>
                 </div>
             </div>
-
             {expandedPanel === 'icon' && (
                 <div className={styles.panel}>
                     <IconPickerPanel icons={PAYROLL_ICONS} value={currentIcon} onChange={(e) => handleIconChange(e)}/>
@@ -131,6 +158,18 @@ export function PayrollSectionComponent ({id, name = 'New Section', icon = "paym
                 onClose={() => setIsModalOpen(false)}
                 onConfirmation={removeSection}
                 className={styles.modal}>
+            </ModalComponent>
+            <ModalComponent
+                isOpen={isEditModalOpen}
+                closable
+                title='Edit label'
+                primaryButtonText='Confirm'
+                onClose={() => setisEditModalOpen(false)}
+                onConfirmation={() => {handleNameChange(tempValue); setisEditModalOpen(false)}}
+                className={styles.modal}>
+                <InputGroupComponent label='Label' helper='Maximum 25 characters'>
+                    <TextFieldComponent placeholder='Type a new label' value={tempValue} minLength={MinLength} maxLength={MaxLength} onChange={(newValue) => setTempValue(newValue)}></TextFieldComponent>
+                </InputGroupComponent>
             </ModalComponent>
         </div>
     )

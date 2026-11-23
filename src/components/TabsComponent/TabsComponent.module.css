@@ -5,4 +5,12 @@
     gap: var(--space-1);
     border-radius: var(--radius-lg);
     background-color: var(--card);
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+    }
 }

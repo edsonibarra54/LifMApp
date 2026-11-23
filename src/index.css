@@ -123,13 +123,13 @@
   --card-foreground: var(--gray-100);
 
   /* Raised layer for controls and containers above the base surface. */
-  --layer: var(--gray-0);
+  --layer: var(--gray-10);
 
   /* Hovered layer. */
-  --layer-hover: var(--gray-10);
+  --layer-hover: var(--gray-20);
 
   /* Pressed/active layer. */
-  --layer-active: var(--gray-20);
+  --layer-active: var(--gray-30);
 
   /* ==========================================================================
      COLORS - PRIMARY ACTIONS
