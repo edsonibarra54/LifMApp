@@ -8,6 +8,8 @@
     font-family: var(--font-family-base);
     font-size: var(--font-size-md);
     text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .tab:hover:not(.disabled) {
@@ -26,4 +28,10 @@
     cursor: default;
     opacity: 0.5;
     pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .tab {
+        width: 100%;
+    }
 }

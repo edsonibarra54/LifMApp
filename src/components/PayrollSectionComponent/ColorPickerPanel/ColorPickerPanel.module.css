@@ -57,8 +57,21 @@
     background: none;
 }
 
-.colorPciker__value {
+.colorPicker__value {
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-normal);
     color: var(--muted-foreground);
+}
+
+@media (max-width: 640px) {
+    .component {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .line {
+        display: none;
+    }
 }

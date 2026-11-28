@@ -8,6 +8,7 @@ type ModalVariant = 'default' | 'danger' | 'acknowledgment';
 
 type ModalComponentProps = {
     className?: string;
+    children?: ReactNode;
     isOpen?: boolean,
     closable?: boolean,
     variant?: ModalVariant,
@@ -22,13 +23,14 @@ type ModalComponentProps = {
 
 export function ModalComponent({ 
     className,
+    children,
     isOpen = false,
     closable = false,
     variant = "default",
-    title = "Modal title", 
+    title = "Title", 
     message, 
-    primaryButtonText = "Ok", 
-    secondaryButtonText = "Cancel",
+    primaryButtonText, 
+    secondaryButtonText,
     icon,
     onClose,
     onConfirmation }: ModalComponentProps) {
@@ -38,9 +40,14 @@ export function ModalComponent({
         <div className={styles.component}>
             <div className={`${styles.modal} ${styles[variant]} ${className ?? ''}`}>
                 <div className={styles.modal__header}>
-                    {icon && (
-                        <div className={styles.modal__icon}>{icon}</div>
-                    )}
+                    <div className={styles.header__content}>
+                        {icon && (
+                            <div className={styles.modal__icon}>{icon}</div>
+                        )}
+                        {title && (
+                            <span className={styles.modal__title}>{title}</span>
+                        )}
+                    </div>
                     {closable && (
                         <IconButtonComponent variant="ghost" color='neutral' size='small' onClick={onClose} className={styles.modal__closeIcon}>
                             <Close/>
@@ -48,14 +55,20 @@ export function ModalComponent({
                     )}
                 </div>
                 <div className={styles.modal__content}>
-                    <span className={styles.modal__title}>{title}</span>
                     {message && (
                         <p className={styles.modal__message}>{message}</p>
                     )}
+                    {children && (
+                        children
+                    )}
                 </div>
                 <div className={styles.modelControls}>
-                    <ButtonComponent size="small" color="neutral" onClick={onClose}>{secondaryButtonText}</ButtonComponent>
-                    <ButtonComponent size="small" color={variant == "danger" ? "danger" : "default"} onClick={onConfirmation}>{primaryButtonText}</ButtonComponent>
+                    {secondaryButtonText && (
+                        <ButtonComponent size="small" color="neutral" onClick={onClose}>{secondaryButtonText}</ButtonComponent>
+                    )}
+                    {primaryButtonText && (
+                        <ButtonComponent size="small" color={variant == "danger" ? "danger" : "default"} onClick={onConfirmation}>{primaryButtonText}</ButtonComponent>
+                    )}
                 </div>
             </div>
         </div>
